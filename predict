@@ -1,0 +1,5 @@
+from ultralytics import YOLO
+
+model = YOLO('yolov12s.pt')
+model.predict()
+# yolo predict model=yolov12s.pt source='https://ultralytics.com/images/bus.jpg'

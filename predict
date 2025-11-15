@@ -2,4 +2,8 @@ from ultralytics import YOLO
 
 model = YOLO('yolov12s.pt')
 model.predict()
+<<<<<<< HEAD
 # yolo predict model=yolov12s.pt source='https://ultralytics.com/images/bus.jpg'
+=======
+# yolo predict model=yolo11n.pt source='https://ultralytics.com/images/bus.jpg'
+>>>>>>> 88504e4234cc76a07c8840469e27439367d2d97f

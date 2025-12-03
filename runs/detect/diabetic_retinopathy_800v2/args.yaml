@@ -2,7 +2,15 @@ task: detect
 mode: train
 model: yolov12s.pt
 data: diabetic_retinopathy.yaml
+<<<<<<< HEAD
 epochs: 400
+=======
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v2/args.yaml
+epochs: 400
+========
+epochs: 100
+>>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:runs/detect/diabetic_retinopathy_640v1/args.yaml
+>>>>>>> 80e058a20 (1203)
 time: null
 patience: 20
 batch: 8
@@ -13,7 +21,15 @@ cache: false
 device: cpu
 workers: 8
 project: runs/detect
+<<<<<<< HEAD
 name: diabetic_retinopathy_800v2
+=======
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v2/args.yaml
+name: diabetic_retinopathy_800v2
+========
+name: diabetic_retinopathy_640v1
+>>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:runs/detect/diabetic_retinopathy_640v1/args.yaml
+>>>>>>> 80e058a20 (1203)
 exist_ok: true
 pretrained: true
 optimizer: auto
@@ -103,4 +119,12 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: botsort.yaml
+<<<<<<< HEAD
 save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\diabetic_retinopathy_800v2
+=======
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v2/args.yaml
+save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\diabetic_retinopathy_800v2
+========
+save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\diabetic_retinopathy_640v1
+>>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:runs/detect/diabetic_retinopathy_640v1/args.yaml
+>>>>>>> 80e058a20 (1203)

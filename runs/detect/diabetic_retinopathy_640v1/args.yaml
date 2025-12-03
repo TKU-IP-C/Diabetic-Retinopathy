@@ -1,19 +1,64 @@
 task: detect
 mode: train
+<<<<<<< HEAD
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_640v1/args.yaml
 model: yolov12s.pt
+========
+model: yolov12n.pt
+>>>>>>>> 80e058a20 (1203):runs/detect/diabetic_retinopathy_800v3_1000/args.yaml
 data: diabetic_retinopathy.yaml
 epochs: 100
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+model: yolov12n.pt
+=======
+model: yolov12s.pt
+>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152
+data: diabetic_retinopathy.yaml
+epochs: 100
+=======
+model: yolov12s.pt
+data: diabetic_retinopathy.yaml
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v2/args.yaml
+epochs: 400
+========
+epochs: 100
+>>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:runs/detect/diabetic_retinopathy_640v1/args.yaml
+>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152
+>>>>>>> 80e058a20 (1203)
 time: null
 patience: 20
 batch: 8
-imgsz: 640
+imgsz: 800
 save: true
 save_period: -1
 cache: false
 device: cpu
 workers: 8
 project: runs/detect
+<<<<<<< HEAD
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_640v1/args.yaml
 name: diabetic_retinopathy_640v1
+========
+name: diabetic_retinopathy_800v3_1000
+>>>>>>>> 80e058a20 (1203):runs/detect/diabetic_retinopathy_800v3_1000/args.yaml
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v1_100/args.yaml
+=======
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v1/args.yaml
+>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152
+name: diabetic_retinopathy_800v1
+=======
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v2/args.yaml
+name: diabetic_retinopathy_800v2
+>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152
+========
+name: diabetic_retinopathy_640v1
+>>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:runs/detect/diabetic_retinopathy_640v1/args.yaml
+>>>>>>> 80e058a20 (1203)
 exist_ok: true
 pretrained: true
 optimizer: auto
@@ -103,4 +148,25 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: botsort.yaml
+<<<<<<< HEAD
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_640v1/args.yaml
 save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\diabetic_retinopathy_640v1
+========
+save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\diabetic_retinopathy_800v3_1000
+>>>>>>>> 80e058a20 (1203):runs/detect/diabetic_retinopathy_800v3_1000/args.yaml
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v1_100/args.yaml
+=======
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v1/args.yaml
+>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152
+save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\diabetic_retinopathy_800v1
+=======
+<<<<<<<< HEAD:runs/detect/diabetic_retinopathy_800v2/args.yaml
+save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\diabetic_retinopathy_800v2
+>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152
+========
+save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\diabetic_retinopathy_640v1
+>>>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:runs/detect/diabetic_retinopathy_640v1/args.yaml
+>>>>>>> 80e058a20 (1203)

@@ -3,7 +3,7 @@ import numpy as np
 import os
 import re
 
-def Image_turn_to_yolo(img, nr, nc, output_txt_path, label):
+def Image_turn_to_yolo(img, nc, nr, output_txt_path, label):
     # 轉為灰階並二值化
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     _, binary = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)

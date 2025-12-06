@@ -86,45 +86,13 @@ def train_diabetic_retinopathy_model():
         # 訓練參數
         train_args = {
             'data': yaml_path,
-<<<<<<< HEAD:training_yolo.py
-            'epochs': 400,
-=======
-<<<<<<< HEAD:training_yolo_lost.py
-<<<<<<< HEAD:training_yolo_lost.py
-<<<<<<< HEAD:training_yolo_lost.py
             'epochs': 100,
-=======
-            'epochs': 400,
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:training_yolo.py
-=======
-            'epochs': 400,
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:training_yolo.py
-=======
-            'epochs': 400,
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:training_yolo.py
->>>>>>> 80e058a20 (1203):training_yolo_lost.py
             'imgsz': 800,
             'batch': 8,           # 視網膜圖片較大，使用較小的批次
             'patience': 20,       # 早停耐心值
             'save': True,
             'project': 'runs/detect',
-<<<<<<< HEAD:training_yolo.py
-            'name': 'diabetic_retinopathy_800v2',
-=======
-<<<<<<< HEAD:training_yolo_lost.py
-<<<<<<< HEAD:training_yolo_lost.py
-<<<<<<< HEAD:training_yolo_lost.py
-            'name': 'diabetic_retinopathy_800v5_500_green',
-=======
-            'name': 'diabetic_retinopathy_800v2',
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:training_yolo.py
-=======
-            'name': 'diabetic_retinopathy_800v2',
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:training_yolo.py
-=======
-            'name': 'diabetic_retinopathy_800v2',
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:training_yolo.py
->>>>>>> 80e058a20 (1203):training_yolo_lost.py
+            'name': 'DR_sz800_train100_green_v1',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
         }

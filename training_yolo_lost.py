@@ -92,7 +92,7 @@ def train_diabetic_retinopathy_model():
             'patience': 20,       # 早停耐心值
             'save': True,
             'project': 'runs/detect',
-            'name': 'DR_sz800_train100_green_v1',
+            'name': 'DR_sz800_train100_green_1000_v1_',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
         }

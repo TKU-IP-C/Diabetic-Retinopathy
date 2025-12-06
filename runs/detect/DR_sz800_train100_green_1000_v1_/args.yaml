@@ -13,7 +13,7 @@ cache: false
 device: cpu
 workers: 8
 project: runs/detect
-name: DR_sz800_train100_green_v1
+name: DR_sz800_train100_green_1000_v1_
 exist_ok: true
 pretrained: true
 optimizer: auto
@@ -103,4 +103,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: botsort.yaml
-save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\DR_sz800_train100_green_v1
+save_dir: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\runs\detect\DR_sz800_train100_green_1000_v1_

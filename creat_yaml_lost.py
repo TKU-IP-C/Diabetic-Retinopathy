@@ -9,24 +9,12 @@ train: {os.path.abspath(r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\images\train"
 val: {os.path.abspath(r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\images\val ")}      # 驗證圖片路徑
 
 # 類別名稱 (根據您的病灶類型修改)
-<<<<<<<< HEAD:creat_yaml.py
-nc: 6  # 類別數量
-names:
-    0: Background  # 背景
-    1: Microaneurysms  # 微動脈瘤
-    2: Haemorrhages  # 出血
-    3: Hard Exudates  # 硬性滲出物
-    4: Soft Exudates  # 軟性滲出物
-    5: Optic Disc  # 視神經盤
-========
-nc: 5  # 類別數量
+nc: 4  # 類別數量
 names:
     0: Microaneurysms  # 微動脈瘤
     1: Haemorrhages  # 出血
-    2: Hard Exudates  # 硬性滲出物
-    3: Soft Exudates  # 軟性滲出物
-    4: Optic Disc  # 視神經盤
->>>>>>>> 80e058a20 (1203):creat_yaml_lost.py
+    2: Hard Exudates + Soft Exudates  #硬性滲出物 + 軟性滲出物
+    3: Optic Disc  # 視神經盤
 
 # 下載指令/說明
 # download: |

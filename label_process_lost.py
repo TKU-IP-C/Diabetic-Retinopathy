@@ -3,7 +3,7 @@ import numpy as np
 import os
 import re
 
-def Image_turn_to_yolo(img, nc, nr, output_txt_path, label):
+def Image_turn_to_yolo(img, nr, nc, output_txt_path, label):
     # 轉為灰階並二值化
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     _, binary = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
@@ -17,30 +17,22 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path, label):
                 
             for contour in contours:
                 x, y, w, h = cv2.boundingRect(contour)
-                if w * h < 100:  # 忽略過小的物件
-                    continue
+
                 # 計算 YOLO 格式座標 (歸一化)
-<<<<<<< HEAD:image_process.py
-=======
-<<<<<<< HEAD:label_process_lost.py
-<<<<<<< HEAD:label_process_lost.py
-<<<<<<< HEAD:label_process_lost.py
+
                 x_center = (x + w / 2) / nr
                 y_center = (y + h / 2) / nc
                 width = w / nr
                 height = h / nc
-=======
-=======
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:image_process.py
-=======
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:image_process.py
->>>>>>> 80e058a20 (1203):label_process_lost.py
-                x_center = max(0, min(1, (x + w / 2) / nr))
-                y_center = max(0, min(1, (y + h / 2) / nc))
-                width = max(0, min(1, w / nr))
-                height = max(0, min(1, h / nc))
 
->>>>>>> 40e592e4cb8043624cc2ec7cc6e1c917896aa152:image_process.py
+                x_center = (x + w / 2) / nr
+                y_center = (y + h / 2) / nc
+                width = w / nr
+                height = h / nc
+                if label == 3:
+                    label = 2 #合併兩個特徵
+                elif label == 4:
+                    label = 3 #併齊標籤值 p.s我前面邏輯懶得重寫，找機會再說
                 # 寫入檔案 (YOLO 格式)
                 f.write(f"{label} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
     else:

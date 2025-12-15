@@ -5,94 +5,28 @@ import numpy as np
 import torch
 from pathlib import Path
 
-def setup_environment():
-    """設定訓練環境"""
-    print("🚀 設定訓練環境...")
-    
-    # 確保 YAML 配置文件存在
-    yaml_path = r"diabetic_retinopathy.yaml"
-    if not os.path.exists(yaml_path):
-        print("❌ YAML 配置文件不存在，請先建立")
-        return None
-    
-    # 檢查資料集結構
-    base_path = Path(r"dataset\IDRiD\A. Segmentation\IDRiD_yolo")
-    required_folders = ['images/train', 'images/val', 'labels/train', 'labels/val']
-    
-    for folder in required_folders:
-        folder_path = base_path / folder
-        if not folder_path.exists():
-            print(f"❌ 缺少資料夾: {folder_path}")
-            return None
-        else:
-            file_count = len(list(folder_path.glob('*')))
-            print(f"✅ {folder}: {file_count} 個檔案")
-    
-    return yaml_path
-
-def analyze_dataset():
-    """分析資料集"""
-    print("\n📊 分析資料集...")
-    
-    base_path = Path(r"dataset\IDRiD\A. Segmentation\IDRiD_yolo")
-    
-    for split in ['train', 'val']:
-        images_dir = base_path / 'images' / split
-        labels_dir = base_path / 'labels' / split
-        
-        # 統計圖片和標註
-        image_files = list(images_dir.glob('*.*'))
-        label_files = list(labels_dir.glob('*.txt'))
-        
-        # 計算有標註的圖片數量
-        labeled_count = 0
-        total_objects = 0
-        
-        for label_file in label_files:
-            with open(label_file, 'r') as f:
-                lines = f.readlines()
-                if lines:
-                    labeled_count += 1
-                    total_objects += len(lines)
-        
-        print(f"  {split.upper()} 集:")
-        print(f"    圖片: {len(image_files)} 個")
-        print(f"    標註: {len(label_files)} 個")
-        print(f"    有標註的圖片: {labeled_count} 個")
-        print(f"    總物件數量: {total_objects} 個")
-        
-        if labeled_count > 0:
-            print(f"    平均每圖物件: {total_objects/labeled_count:.2f} 個")
-
 def train_diabetic_retinopathy_model():
     """訓練糖尿病視網膜病變檢測模型"""
     
     print("\n🎯 開始訓練糖尿病視網膜病變檢測模型...")
     
-    # 設定環境
-    # yaml_path = setup_environment()
-    # if not yaml_path:
-    #     return
     yaml_path = r"diabetic_retinopathy.yaml"
-    
-    # 分析資料集
-    # analyze_dataset()
     
     try:
         # 加載模型
-        print("\n📦 加載 YOLOv12n 模型...")
-        model = YOLO('yolov12n.pt')
+        print("\n📦 加載YOLO模型...")
+        model = YOLO('yolov8n.pt')
         
         # 訓練參數
         train_args = {
             'data': yaml_path,
             'epochs': 100,
             'imgsz': 800,
-            'batch': 8,           # 視網膜圖片較大，使用較小的批次
+            'batch': 4,           # 視網膜圖片較大，使用較小的批次
             'patience': 20,       # 早停耐心值
             'save': True,
             'project': 'runs/detect',
-            'name': 'DR_sz800_train100_green_1000_v1_',
+            'name': 'DR_sz800_train100_green_1000_v1_yolo8n_batch4  ',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
         }

@@ -17,8 +17,6 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path, label):
                 
             for contour in contours:
                 x, y, w, h = cv2.boundingRect(contour)
-                if w * h < 1000:  # 忽略過小的區域
-                    continue
                 # 計算 YOLO 格式座標 (歸一化)   
 
                 x_center = (x + w / 2) / nr

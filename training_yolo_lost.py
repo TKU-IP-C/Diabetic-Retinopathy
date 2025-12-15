@@ -15,18 +15,18 @@ def train_diabetic_retinopathy_model():
     try:
         # 加載模型
         print("\n📦 加載YOLO模型...")
-        model = YOLO('yolov8n.pt')
+        model = YOLO('yolov12n.pt')
         
         # 訓練參數
         train_args = {
             'data': yaml_path,
             'epochs': 100,
-            'imgsz': 800,
-            'batch': 4,           # 視網膜圖片較大，使用較小的批次
+            'imgsz': 640,
+            'batch': 8,           # 視網膜圖片較大，使用較小的批次
             'patience': 20,       # 早停耐心值
             'save': True,
             'project': 'runs/detect',
-            'name': 'DR_sz800_train100_green_1000_v1_yolo8n_batch4  ',
+            'name': 'DR_sz640_train100_green_v1_yolov12n_batch8',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
         }

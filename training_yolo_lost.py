@@ -21,12 +21,12 @@ def train_diabetic_retinopathy_model():
         train_args = {
             'data': yaml_path,
             'epochs': 100,
-            'imgsz': 640,
-            'batch': 8,           # 視網膜圖片較大，使用較小的批次
-            'patience': 20,       # 早停耐心值
+            'imgsz': 1280,
+            'batch': 4,           # 視網膜圖片較大，使用較小的批次
+            'patience': 30,       # 早停耐心值
             'save': True,
             'project': 'runs/detect',
-            'name': 'DR_sz640_train100_green_v1_yolov12n_batch8',
+            'name': 'DR_sz1280_train100_green_v1_yolov12n_batch4',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
         }

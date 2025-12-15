@@ -18,12 +18,8 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path, label):
             for contour in contours:
                 x, y, w, h = cv2.boundingRect(contour)
                 # 計算 YOLO 格式座標 (歸一化)   
-
-                x_center = (x + w / 2) / nr
-                y_center = (y + h / 2) / nc
-                width = w / nr
-                height = h / nc
-
+                if w * h < 500:
+                    continue  # 忽略過小的區域
                 x_center = (x + w / 2) / nr
                 y_center = (y + h / 2) / nc
                 width = w / nr
@@ -31,7 +27,7 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path, label):
                 if label == 3:
                     label = 2 #合併兩個特徵
                 elif label == 4:
-                    label = 3 #併齊標籤值 p.s我前面邏輯懶得重寫，找機會再說
+                    continue #忽略特徵
                 # 寫入檔案 (YOLO 格式)
                 f.write(f"{label} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
     else:

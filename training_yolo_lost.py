@@ -20,16 +20,33 @@ def train_diabetic_retinopathy_model():
         # 訓練參數
         train_args = {
             'data': yaml_path,
-            'epochs': 150,
-            'imgsz': 1920,        # 使用較高解析度的圖片
-            'batch': 2,           # 視網膜圖片較大，使用較小的批次
-            'patience': 30,       # 早停耐心值
+            'epochs': 70,
+            'imgsz': 1280,        # 使用較高解析度的圖片
+            'batch': 8,           # 視網膜圖片較大，使用較小的批次
+            'patience': 20,       # 早停耐心值
             'save': True,
             'device': '0',
             'project': 'runs/detect',
-            'name': 'DR_sz1920_train150_green_v1_yolov12n_batch4',
+            'name': 'DR_sz1280_train70_green_v5_yolov12n_batch8',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
+            'augment': True,      # 使用資料增強
+            'lr0': 0.01,          # 初始學習率
+            'lrf': 0.2,           # 最終學習率
+            'box': 1.5,           # 邊界框損失增
+            'hsv_h': 0.015,   # 色調變化 (default 0.015)
+            'hsv_s': 0.7,     # 飽和度變化
+            'hsv_v': 0.4,     # 亮度變化
+            # 'degrees': 10.0,  # 旋轉 ±10度
+            # 'translate': 0.2, # 平移 ±20%
+            'scale': 0.9,     # 縮放 (可加大到 0.9~1.0 幫助小目標)
+            'shear': 10.0,    # 剪切
+            # 'perspective': 0.0001,  # 透視變換
+            # 'flipud': 0.5,    # 上下翻轉 50%
+            # 'fliplr': 0.5,    # 左右翻轉 50%
+            'mosaic': 1.0,    # Mosaic augmentation (強烈推薦開啟，對小資料集超有效)
+            'mixup': 0.3,     # MixUp (可試 0.3~0.5)
+            # 'freeze': 10,  # 凍結前 10 層
         }
         
         print("🚀 開始訓練...")

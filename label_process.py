@@ -3,8 +3,10 @@ import numpy as np
 import os
 import re
 
-def label_process(img_path, label_path, label_num):
-    img = cv2.imread(img_path)
+def label_process(Ground_path, label_path, label_num):
+    if label_num == 4:
+        print(Ground_path)
+    img = cv2.imread(Ground_path)
     nr, nc = img.shape[:2]
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     _, binary = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
@@ -14,14 +16,13 @@ def label_process(img_path, label_path, label_num):
         with open(label_path + ".txt", 'a') as f:
             for contour in contours:
                 x, y, w, h = cv2.boundingRect(contour)  
-                x_center = (x + w / 2) / nr
-                y_center = (y + h / 2) / nc
-                width = w / nr
-                height = h / nc
-                # 寫入檔案 (YOLO 格式)
+                x_center = (x + w / 2) / nc
+                y_center = (y + h / 2) / nr
+                width = w / nc
+                height = h / nr
                 f.write(f"{label_num} {x_center:.3f} {y_center:.3f} {width:.3f} {height:.3f}\n")
     else:
-        open(label_path + ".txt", 'w').close()
+        open(label_path + ".txt", 'a').close()
 
 #############  main  #############
 folder_Ground= r"dataset\IDRiD\A. Segmentation\Groundtruths"
@@ -39,7 +40,7 @@ for i in range(2):
         for file in files:
             Ground_img = os.path.join(lesion_path, file)
             lesion_file = os.path.splitext(file)[0]
-            print(lesion_file, lesion_name, status)
+            # print(lesion_file, lesion_name, status)
 
             if lesion_name == "MA":
                 label_num = 0
@@ -55,5 +56,7 @@ for i in range(2):
             folder_label = r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\labels"
             folder_label = os.path.join(folder_label, status)
             label_path = os.path.join(folder_label, lesion_file)
+            # print(Ground_img, label_path)
             label_process(Ground_img, label_path, label_num)
+print("✅ 標註檔案處理完成！")
 

@@ -4,7 +4,8 @@ import numpy as np
 
 def img_process(img_path, img_num, status, lesion_name):
     ## 切割影像 ##
-    img = cv2.imread(img_path, 0)
+    img = cv2.imread(img_path, -1)
+    img[img > 0] = 255
     nr, nc = img.shape[:2]
     num_list = [0, 1, 2, 3, 4] # 0: original, 1: left_up, 2: right_up, 3: left_down, 4: right_down
     for num in num_list:

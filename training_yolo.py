@@ -1,9 +1,4 @@
 from ultralytics import YOLO
-import os
-import cv2
-import numpy as np
-import torch
-from pathlib import Path
 
 def train_diabetic_retinopathy_model():
     """訓練糖尿病視網膜病變檢測模型"""
@@ -27,9 +22,33 @@ def train_diabetic_retinopathy_model():
             'save': True,
             'device': '0',
             'project': 'runs/detect',
-            'name': 'DR_sz800_train70_v1',
+            'name': 'DR_sz800_train70_v2',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
+
+            # 資料增強（眼底關鍵：不要太暴力）
+            'mosaic': 0.9,
+            'mixup': 0.0,                    # 很多人都直接關掉
+            'copy_paste': 0.0,
+            'hsv_h': 0.015,                  # 色相變化非常小
+            'hsv_s': 0.4,
+            'hsv_v': 0.4,
+            'degrees': 0.0,                  # 通常不旋轉
+            'translate': 0.1,
+            'scale': 0.5,
+            'shear': 0.0,
+            'perspective': 0.0,
+            'flipud': 0.0,
+            'fliplr': 0.5,
+
+            # 學習率相關
+            'optimizer': 'AdamW',
+            'lr0': 0.001,
+            'lrf': 0.01,
+            'cos_lr': True,
+            'warmup_epochs': 3.0,
+            'warmup_momentum': 0.8,
+            'warmup_bias_lr': 0.1
         }
         
         print("🚀 開始訓練...")

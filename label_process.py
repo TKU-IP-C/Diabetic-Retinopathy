@@ -11,7 +11,7 @@ def label_process(img_path, label_path, label_num):
     # 尋找輪廓
     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if len(contours) > 0:
-        with open(label_path, 'a') as f:
+        with open(label_path + ".txt", 'a') as f:
             for contour in contours:
                 x, y, w, h = cv2.boundingRect(contour)  
                 x_center = (x + w / 2) / nr
@@ -21,7 +21,7 @@ def label_process(img_path, label_path, label_num):
                 # 寫入檔案 (YOLO 格式)
                 f.write(f"{label_num} {x_center:.3f} {y_center:.3f} {width:.3f} {height:.3f}\n")
     else:
-        open(label_path, 'w').close()
+        open(label_path + ".txt", 'w').close()
 
 #############  main  #############
 folder_Ground= r"dataset\IDRiD\A. Segmentation\Groundtruths"

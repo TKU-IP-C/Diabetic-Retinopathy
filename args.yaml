@@ -1,0 +1,30 @@
+# 20/20 iterations complete ✅ (32180.83s)
+# Results saved to C:\Users\jerry\Desktop\大學\專題\Diabetic-Retinopathy\auto\800-150-
+# Best fitness=0.14603 observed at iteration 19
+# Best fitness metrics are {'metrics/precision(B)': 0.47861, 'metrics/recall(B)': 0.3384, 'metrics/mAP50(B)': 0.35093, 'metrics/mAP50-95(B)': 0.14603, 'val/box_loss': 5.02039, 'val/cls_loss': 1.20694, 'val/dfl_loss': 1.44593, 'fitness': 0.14603}
+# Best fitness model is C:\Users\jerry\Desktop\大學\專題\Diabetic-Retinopathy\auto\train
+lr0: 0.00582
+lrf: 0.01129
+momentum: 0.84281
+weight_decay: 0.00052
+warmup_epochs: 3.547
+warmup_momentum: 0.6202
+box: 15.7771
+cls: 0.47781
+dfl: 2.1741
+hsv_h: 0.02037
+hsv_s: 0.31319
+hsv_v: 0.40983
+degrees: 0.0
+translate: 0.17992
+scale: 0.61598
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.46849
+bgr: 0.0
+mosaic: 0.84261
+mixup: 0.0
+cutmix: 0.0
+copy_paste: 0.0
+close_mosaic: 8.0

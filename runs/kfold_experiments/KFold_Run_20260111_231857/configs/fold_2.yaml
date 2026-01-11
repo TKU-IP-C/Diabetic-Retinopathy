@@ -1,0 +1,10 @@
+path: C:/Users/user/Desktop/code/vsc git/Diabetic-Retinopathy/dataset/IDRiD/A. Segmentation/IDRiD_yolo
+train: C:/Users/user/Desktop/code/vsc git/Diabetic-Retinopathy/runs/kfold_experiments/KFold_Run_20260111_231857/configs/train_f2.txt
+val: C:/Users/user/Desktop/code/vsc git/Diabetic-Retinopathy/runs/kfold_experiments/KFold_Run_20260111_231857/configs/val_f2.txt
+nc: 5
+names:
+  0: Microaneurysms
+  1: Haemorrhages
+  2: Hard Exudates
+  3: Soft Exudates
+  4: Optic Disc

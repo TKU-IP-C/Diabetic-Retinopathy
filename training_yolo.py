@@ -22,7 +22,7 @@ def train_diabetic_retinopathy_model():
             'save': True,
             'device': '0',
             'project': 'runs/detect',
-            'name': 'DR_sz800_train70_v2',
+            'name': 'DR_sz800_train70_v1',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
 
@@ -85,8 +85,8 @@ def validate_model(model):
         print("✅ 驗證完成！")
         print(f"📊 mAP50: {metrics.box.map50:.4f}")
         print(f"📊 mAP50-95: {metrics.box.map:.4f}")
-        print(f"📊 精確度: {metrics.box.precision:.4f}")
-        print(f"📊 召回率: {metrics.box.recall:.4f}")
+        print(f"📊 精確度: {metrics.box.mp:.4f}")
+        print(f"📊 召回率: {metrics.box.mr:.4f}")
         
     except Exception as e:
         print(f"❌ 驗證過程中發生錯誤: {e}")
@@ -107,7 +107,6 @@ def main():
         print("\n🎉 訓練流程完成！")
         print("📁 訓練結果保存在: runs/detect/")
         print("💡 您可以使用訓練好的模型進行預測:")
-        print("   results = model('path/to/image.jpg')")
     
     print("\n" + "=" * 60)
 

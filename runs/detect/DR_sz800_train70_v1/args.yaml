@@ -16,13 +16,13 @@ project: runs/detect
 name: DR_sz800_train70_v1
 exist_ok: true
 pretrained: true
-optimizer: auto
+optimizer: AdamW
 verbose: true
 seed: 0
 deterministic: true
 single_cls: false
 rect: false
-cos_lr: false
+cos_lr: true
 close_mosaic: 10
 resume: false
 amp: true
@@ -70,7 +70,7 @@ simplify: true
 opset: null
 workspace: null
 nms: false
-lr0: 0.01
+lr0: 0.001
 lrf: 0.01
 momentum: 0.937
 weight_decay: 0.0005
@@ -84,7 +84,7 @@ pose: 12.0
 kobj: 1.0
 nbs: 64
 hsv_h: 0.015
-hsv_s: 0.7
+hsv_s: 0.4
 hsv_v: 0.4
 degrees: 0.0
 translate: 0.1
@@ -94,7 +94,7 @@ perspective: 0.0
 flipud: 0.0
 fliplr: 0.5
 bgr: 0.0
-mosaic: 1.0
+mosaic: 0.9
 mixup: 0.0
 cutmix: 0.0
 copy_paste: 0.0

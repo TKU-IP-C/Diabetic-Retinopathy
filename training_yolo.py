@@ -22,7 +22,7 @@ def train_diabetic_retinopathy_model():
             'save': True,
             'device': '0',
             'project': 'runs/detect',
-            'name': 'DR_sz800_train70_v1',
+            'name': 'DR_sz800_train70_v2',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
 
@@ -42,7 +42,7 @@ def train_diabetic_retinopathy_model():
             'fliplr': 0.5,
 
             # 學習率相關
-            'optimizer': 'AdamW',
+            'optimizer': 'auto',
             'lr0': 0.001,
             'lrf': 0.01,
             'cos_lr': True,
@@ -55,41 +55,14 @@ def train_diabetic_retinopathy_model():
         print("這可能需要一些時間，請耐心等待...")
         
         # 開始訓練
-        results = model.train(**train_args)
+        model.train(**train_args)
         
         print("✅ 訓練完成！")
-        
-        # 顯示訓練結果
-        if hasattr(results, 'results_dict'):
-            print("\n📈 訓練結果:")
-            for key, value in results.results_dict.items():
-                print(f"  {key}: {value:.4f}")
-        
-        return model, results
+
         
     except Exception as e:
         print(f"❌ 訓練過程中發生錯誤: {e}")
         return None, None
-
-def validate_model(model):
-    """驗證訓練好的模型"""
-    if model is None:
-        return
-    
-    print("\n🔍 驗證模型...")
-    
-    try:
-        # 在驗證集上評估模型
-        metrics = model.val()
-        
-        print("✅ 驗證完成！")
-        print(f"📊 mAP50: {metrics.box.map50:.4f}")
-        print(f"📊 mAP50-95: {metrics.box.map:.4f}")
-        print(f"📊 精確度: {metrics.box.mp:.4f}")
-        print(f"📊 召回率: {metrics.box.mr:.4f}")
-        
-    except Exception as e:
-        print(f"❌ 驗證過程中發生錯誤: {e}")
 
 def main():
     """主函數"""
@@ -98,15 +71,7 @@ def main():
     print("=" * 60)
 
     # 訓練模型
-    model, results = train_diabetic_retinopathy_model()
-    
-    # 驗證模型
-    if model:
-        validate_model(model)
-        
-        print("\n🎉 訓練流程完成！")
-        print("📁 訓練結果保存在: runs/detect/")
-        print("💡 您可以使用訓練好的模型進行預測:")
+    train_diabetic_retinopathy_model()
     
     print("\n" + "=" * 60)
 

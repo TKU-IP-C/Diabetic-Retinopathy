@@ -15,14 +15,14 @@ def train_diabetic_retinopathy_model():
         # 訓練參數
         train_args = {
             'data': yaml_path,
-            'epochs': 70,
+            'epochs': 1,
             'imgsz': 800,        # 使用較高解析度的圖片
             'batch': 8,           # 視網膜圖片較大，使用較小的批次
             'patience': 20,       # 早停耐心值
             'save': True,
             'device': '0',
             'project': 'runs/detect',
-            'name': 'DR_sz800_train70_v2',
+            'name': 'test',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
 

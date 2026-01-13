@@ -1,0 +1,7 @@
+Experiment ID: KFold_Run_20260112_150318
+Total Folds: 5
+----------------------------------------
+----------------------------------------
+Final Statistics:
+ > Average mAP50: nan
+ > Std Deviation: nan

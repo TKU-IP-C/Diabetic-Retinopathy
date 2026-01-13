@@ -21,13 +21,14 @@ TRAINING_CONFIG = {
     
     # --- 2. 核心訓練控制 (Core Training Control) ---
     "epochs": 150,                       # 總訓練輪數
-    "imgsz": 800,                       # 輸入影像解析度
+    "imgsz": 1080,                       # 輸入影像解析度
     "batch": 8,                         # 批次大小
     "patience": 50,                     # 早停機制耐心值
     "device": 0,
     "workers": 0,                       # 資料讀取執行緒數
     "exist_ok": True,                   # 是否允許覆蓋已存在的實驗資料夾
-    
+    "rect": True,                       # 是否啟用矩形訓練以加速
+
     # --- 3. 優化器與學習率 (Optimizer & Learning Rate) ---
     "lr0": 0.005,                       # 初始學習率
     "lrf": 0.01,                        # 最終學習率比例 (最終學習率 = lr0 * lrf)
@@ -36,15 +37,15 @@ TRAINING_CONFIG = {
     "optimizer": "auto",                # 優化器類型 (auto 會根據環境選用 AdamW 或 SGD)
     
     # --- 4. 損失函數權重 (Loss Weights / Gains) ---
-    "box": 9.0,                         # 邊界框位置損失權重，數值高則更要求定位精準度
+    "box": 16.5,                         # 邊界框位置損失權重，數值高則更要求定位精準度
     "cls": 1.5,                         # 分類損失權重，衡量辨識病灶種類的準確率
     "dfl": 2.0,                         # 分佈焦點損失權重，細化邊界框的邊緣學習
     
     # --- 5. 數據增強 (Data Augmentation) ---
     "dropout": 0.4,                     # 隨機關閉神經元比例，增加模型的泛化能力
     "mosaic": 1.0,                      # 馬賽克增強比例 (1.0 = 100%)，將四張圖拼成一張，對小物件辨識極有幫助
-    "copy_paste": 0.5,                  # 複製貼上增強機率，將物件實例隨機複製到其他圖上
-    "fliplr": 0.5,                      # 左右翻轉影像的機率 (50%)
+    "copy_paste": 0,                  # 複製貼上增強機率，將物件實例隨機複製到其他圖上
+    "fliplr": 0,                      # 左右翻轉影像的機率 (50%)
     
     # --- 6. 類別定義 (Class Definitions) ---
     "names": {
@@ -178,10 +179,10 @@ def run_kfold_training():
                 train_args[key] = value
 
         # 開始訓練此折
-        model.train(**train_args)
+        metrics = model.train(**train_args)
         
         # 驗證該折效能並記錄
-        metrics = model.val()
+        # metrics = model.val()
         results_map50.append(metrics.box.map50)
         print(f"✅ 第 {fold_num} 折完畢，當前 mAP50: {metrics.box.map50:.4f}")
 

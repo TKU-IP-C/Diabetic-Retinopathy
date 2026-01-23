@@ -12,8 +12,8 @@ val: {os.path.abspath(r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\images\val ")} 
 nc: 5  # 類別數量
 names:
     0: MA  # 微動脈瘤
-    1: EX  # 出血
-    2: HE  #硬性滲出物
+    1: HE  # 出血
+    2: EX  #硬性滲出物
     3: SE  #軟性滲出物
     4: OD  #視神經盤
 

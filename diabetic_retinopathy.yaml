@@ -7,10 +7,10 @@ val: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\dataset\IDRiD\A. Se
 nc: 5  # 類別數量
 names:
     0: MA  # 微動脈瘤
-    1: EX  # 出血
-    2: HE  #硬性滲出物
-    3: SE  #軟性滲出物
-    4: OD  #視神經盤
+    1: HE  # 出血
+    2: EX  # 硬性滲出物
+    3: SE  # 軟性滲出物
+    4: OD  # 視神經盤
 
 # 下載指令/說明
 # download: |

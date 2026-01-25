@@ -1,0 +1,7 @@
+epoch: 150
+imgsz: 1080
+batch: 8
+rect: True
+box: 16.5
+mosaic: 1.0
+嘗試參數中...

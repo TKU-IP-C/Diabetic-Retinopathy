@@ -1,0 +1,9 @@
+epoch: 150
+imgsz: 1080
+batch: 8
+rect: True
+box: 16.5
+mosaic: 1.0
+cls: 1.5
+嘗試參數中...
+MAP50: 54最高

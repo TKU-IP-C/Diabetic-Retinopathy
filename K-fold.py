@@ -14,7 +14,7 @@ from ultralytics import YOLO
 # ============================================================
 TRAINING_CONFIG = {
     # --- 1. 實驗與路徑設定 (Experiment & Path) ---
-    "k_fold": 5,                        # 交叉驗證折數
+    "k_fold": 1,                        # 交叉驗證折數
     "base_path": r"dataset\IDRiD\A. Segmentation\IDRiD_yolo", # 資料集根目錄路徑
     "results_root": "runs/kfold_experiments", # 所有實驗結果儲存的根目錄名稱
     "model_variant": "yolov12n.pt",     # 模型版本
@@ -32,17 +32,17 @@ TRAINING_CONFIG = {
     # # --- 3. 優化器與學習率 (Optimizer & Learning Rate) ---
     # "lr0": 0.005,                       # 初始學習率
     # "lrf": 0.01,                        # 最終學習率比例 (最終學習率 = lr0 * lrf)
-    # "momentum": 0.937,                  # 優化器動量
+    "momentum": 1.0,                      # 優化器動量
     # "weight_decay": 0.0005,             # 權重衰減（L2 正則化），用於防止模型過度擬合
-    # "optimizer": "auto",                # 優化器類型 (auto 會根據環境選用 AdamW 或 SGD)
+    "optimizer": "SGD",                   # 優化器類型 (auto 會根據環境選用 AdamW 或 SGD)
     
     # # --- 4. 損失函數權重 (Loss Weights / Gains) ---
     "box": 16.5,                         # 邊界框位置損失權重，數值高則更要求定位精準度
-    # "cls": 1.5,                         # 分類損失權重，衡量辨識病灶種類的準確率
-    # "dfl": 2.0,                         # 分佈焦點損失權重，細化邊界框的邊緣學習
+    "cls": 1.5,                          # 分類損失權重，衡量辨識病灶種類的準確率
+    # "dfl": 2.0,                        # 分佈焦點損失權重，細化邊界框的邊緣學習
     
     # # --- 5. 數據增強 (Data Augmentation) ---
-    # "dropout": 0.4,                     # 隨機關閉神經元比例，增加模型的泛化能力
+    # "dropout": 0.4,                   # 隨機關閉神經元比例，增加模型的泛化能力
     "mosaic": 1.0,                      # 馬賽克增強比例 (1.0 = 100%)，將四張圖拼成一張，對小物件辨識極有幫助
     # "copy_paste": 0,                  # 複製貼上增強機率，將物件實例隨機複製到其他圖上
     # "fliplr": 0,                      # 左右翻轉影像的機率 (50%)

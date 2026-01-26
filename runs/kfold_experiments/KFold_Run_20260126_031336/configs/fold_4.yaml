@@ -1,0 +1,10 @@
+path: C:/Users/user/Desktop/code/vsc git/Diabetic-Retinopathy/dataset/IDRiD/A. Segmentation/IDRiD_yolo
+train: C:/Users/user/Desktop/code/vsc git/Diabetic-Retinopathy/runs/kfold_experiments/KFold_Run_20260126_031336/configs/train_f4.txt
+val: C:/Users/user/Desktop/code/vsc git/Diabetic-Retinopathy/runs/kfold_experiments/KFold_Run_20260126_031336/configs/val_f4.txt
+nc: 5
+names:
+  0: MA
+  1: HE
+  2: EX
+  3: SE
+  4: OD

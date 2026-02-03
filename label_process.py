@@ -1,11 +1,8 @@
 import cv2
 import numpy as np
 import os
-import re
 
 def label_process(Ground_path, label_path, label_num):
-    if label_num == 4:
-        print(Ground_path)
     img = cv2.imread(Ground_path)
     nr, nc = img.shape[:2]
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -15,6 +12,11 @@ def label_process(Ground_path, label_path, label_num):
     if len(contours) > 0:
         with open(label_path + ".txt", 'a') as f:
             for contour in contours:
+                ##忽略過小的出血點
+                if label_num == 1:
+                    if cv2.contourArea(contour) < 100:  # 面積小於50的忽略
+                        continue
+
                 x, y, w, h = cv2.boundingRect(contour)  
                 x_center = (x + w / 2) / nc
                 y_center = (y + h / 2) / nr

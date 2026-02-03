@@ -14,7 +14,7 @@ TRAINING_CONFIG = {
     "k_fold": 5,                        # 交叉驗證折數
     "base_path": r"dataset\IDRiD\A. Segmentation\IDRiD_yolo", # 資料集根目錄路徑
     "results_root": "runs/kfold_experiments", # 所有實驗結果儲存的根目錄名稱
-    "model_variant": "yolov12n.pt",     # 模型版本
+    "model_variant": "yolov12s.pt",     # 模型版本
     
     # --- 2. 核心訓練控制 (Core Training Control) ---
     "epochs": 150,                       # 總訓練輪數
@@ -29,19 +29,19 @@ TRAINING_CONFIG = {
     # # --- 3. 優化器與學習率 (Optimizer & Learning Rate) ---
     # "lr0": 0.005,                       # 初始學習率
     # "lrf": 0.01,                        # 最終學習率比例 (最終學習率 = lr0 * lrf)
-    "momentum": 0.8,                      # 優化器動量
+    # "momentum": 0.8,                      # 優化器動量
     # "weight_decay": 0.0005,             # 權重衰減（L2 正則化），用於防止模型過度擬合
-    "optimizer": "SGD",                   # 優化器類型 (auto 會根據環境選用 AdamW 或 SGD)
+    # "optimizer": "SGD",                   # 優化器類型 (auto 會根據環境選用 AdamW 或 SGD)
     "iou": 0.5,                           # IoU 閾值，用於決定正負樣本
     
     # # --- 4. 損失函數權重 (Loss Weights / Gains) ---
     "box": 16.5,                         # 邊界框位置損失權重，數值高則更要求定位精準度
-    "cls": 1.5,                          # 分類損失權重，衡量辨識病灶種類的準確率
+    # "cls": 1.5,                          # 分類損失權重，衡量辨識病灶種類的準確率
     # "dfl": 3.0,                        # 分佈焦點損失權重，細化邊界框的邊緣學習
     
     # # --- 5. 數據增強 (Data Augmentation) ---
     # "dropout": 0.4,                   # 隨機關閉神經元比例，增加模型的泛化能力
-    "mosaic": 1.0,                      # 馬賽克增強比例 (1.0 = 100%)，將四張圖拼成一張，對小物件辨識極有幫助
+    # "mosaic": 1.0,                      # 馬賽克增強比例 (1.0 = 100%)，將四張圖拼成一張，對小物件辨識極有幫助
     # "copy_paste": 0,                  # 複製貼上增強機率，將物件實例隨機複製到其他圖上
     # "fliplr": 0,                      # 左右翻轉影像的機率 (50%)
     
@@ -71,7 +71,6 @@ def get_base_id_pool():
         for ext in valid_exts:
             for img_path in split_dir.glob(f"*{ext}"):
                 # 取得基礎 ID（移除增強後綴）
-                # 範例: IDRiD_01_green_processed -> IDRiD_01
                 base_stem = img_path.stem
                 image_pool.append((base_stem, img_path.suffix))
                 
@@ -93,13 +92,10 @@ def create_fold_yaml(exp_dir, fold_idx, train_ids, val_ids):
             for img_id, ext in id_list:
                 for split in ['train', 'val']:
                     origin = img_dir / split / f"{img_id}{ext}"
-                    green = img_dir / split / f"{img_id}_green_processed{ext}"
                     
                     # 只要檔案存在就寫入路徑，兩者互不依賴
                     if origin.exists():
                         f.write(str(origin.absolute()).replace('\\', '/') + '\n')
-                    if green.exists():
-                        f.write(str(green.absolute()).replace('\\', '/') + '\n')
 
     write_paths(train_txt, train_ids)
     write_paths(val_txt, val_ids)

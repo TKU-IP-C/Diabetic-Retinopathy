@@ -1,8 +1,0 @@
-Experiment ID: KFold_Run_20260125_231149
-Total Folds: 1
-----------------------------------------
-Fold 1: mAP50 = 0.4590
-----------------------------------------
-Final Statistics:
- > Average mAP50: 0.4590
- > Std Deviation: 0.0000

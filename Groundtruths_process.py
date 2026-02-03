@@ -5,14 +5,14 @@ import numpy as np
 def img_process(img_path, img_num, status, lesion_name):
     ## 切割影像 ##
     img = cv2.imread(img_path, -1)
-    img[img > 0] = 255
+    img[img > 0] = 255 ##轉成白色
     nr, nc = img.shape[:2]
     num_list = [0, 1, 2, 3, 4] # 0: original, 1: left_up, 2: right_up, 3: left_down, 4: right_down
     for num in num_list:
-        ROI_left_up = img[0:int(nr//2), 0:int(nc//2)]
-        ROI_right_up = img[0:int(nr//2), int(nc//2):nc]
-        ROI_left_down = img[int(nr//2):nr, 0:int(nc//2)]
-        ROI_right_down = img[int(nr//2):nr, int(nc//2):nc]
+        ROI_left_up = img[0:int(nr/2), 0:int(nc/2)]
+        ROI_right_up = img[0:int(nr/2), int(nc/2):nc]
+        ROI_left_down = img[int(nr/2):nr, 0:int(nc/2)]
+        ROI_right_down = img[int(nr/2):nr, int(nc/2):nc]
         if num == 0:
             cv2.imwrite(f"dataset/IDRiD/A. Segmentation/Groundtruths/{status}/{lesion_name}/IDRiD_{img_num}_{num}.tif", img)
         if num == 1:
@@ -50,3 +50,4 @@ for i in range(5):
             img_num = file_name.split("_")[-2]
             lesion_name = file_name.split("_")[-1]
             img_process(os.path.join(folder_path, file), img_num, status, lesion_name)
+print("完成!!")
